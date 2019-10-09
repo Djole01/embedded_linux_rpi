@@ -5,14 +5,18 @@
  *      Author: Jarno Tuominen
  */
 
-
 #include <stddef.h> // NULL comes from here :D
 #include <stdio.h> //Needed for printf
 
 #include "wiringPi.h"
 #include "ioconfig.h"
+#include <sys/time.h>
 
 volatile int eventCounter = 0;
+
+unsigned long last_interrupt_time = 0;
+
+
 
 int io_init(void) {
 
@@ -32,11 +36,19 @@ int io_init(void) {
 
 
 void ext_int1_handler(void) {
+	unsigned long interrupt_time = millis();
 	//struct timeval now;
 	//gettimeofday(&now, NULL);
-	eventCounter++;
-	printf("ext_int_1 received\n");
-	printf("Events so far: %d\n",eventCounter);
+	//printf("time taken %f\n",secs);
+
+	if (interrupt_time - last_interrupt_time > 500)
+	{
+		eventCounter++;
+		printf("ext_int_1 received\n");
+		printf("Events so far: %d\n",eventCounter);
+	}
+	last_interrupt_time = interrupt_time;
+
 }
 
 int io_interrupt_init(void) {
