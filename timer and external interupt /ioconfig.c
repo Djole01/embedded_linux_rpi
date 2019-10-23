@@ -41,7 +41,8 @@ void ext_int1_handler(void) {
 	//gettimeofday(&now, NULL);
 	//printf("time taken %f\n",secs);
 
-	if (interrupt_time - last_interrupt_time > 500)
+
+	if (interrupt_time - last_interrupt_time > 15)
 	{
 		eventCounter++;
 		printf("ext_int_1 received\n");
@@ -53,5 +54,7 @@ void ext_int1_handler(void) {
 
 int io_interrupt_init(void) {
 	wiringPiISR(EXT_INT_PIN_1, INT_EDGE_RISING, ext_int1_handler);
+	wiringPiISR(EXT_INT_PIN_2, INT_EDGE_RISING, ext_int1_handler);
+
 	return 0;
 }

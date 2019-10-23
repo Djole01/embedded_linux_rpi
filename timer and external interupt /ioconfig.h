@@ -9,7 +9,9 @@
 #define IOCONFIG_H_
 
 #define DEBUG_PIN_1 22
-#define EXT_INT_PIN_1 8
+#define EXT_INT_PIN_1 7
+#define EXT_INT_PIN_2 9
+
 
 
 
@@ -20,3 +22,4 @@ int io_init(void);
 
 
 #endif /* IOCONFIG_H_ */
+
