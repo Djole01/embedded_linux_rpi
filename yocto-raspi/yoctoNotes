@@ -1,0 +1,29 @@
+
+Yocto - embedded linux - raspberry pi
+notes from udemy course on yocto.
+Task 1 , creating first image.
+
+
+
+./start.sh    -  start docker
+
+. ./sources/poky/oe-init-build-env   - init script creates directory for build environment 
+
+
+workspace/build/conf 
+	bblayers.conf	-specify layers that will be included in our env.
+	local.conf 	- configure global variables.
+	templateconf.cfg - not very imporatant atm.
+
+VIM 
+This docker instance does not have nano, 
+vim commands are: 
+:q!   to quit
+:wq save and quit
+insert key to start typing.
+
+
+bitbake imageName    - creates an image
+
+runqemu qemux86 core-imageminimal slirp   - runs a qemu instance of our image
+
