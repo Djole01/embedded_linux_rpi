@@ -27,3 +27,6 @@ bitbake imageName    - creates an image
 
 runqemu qemux86 core-imageminimal slirp   - runs a qemu instance of our image
 
+local.conf
+dl dir = /opt/yocto/cache/downloads
+sstate dir = /opt/yocto/cache/sstate
